@@ -124,6 +124,42 @@ def true_positive(tgt_list, pred_list, k):
     return tp
 
 
+def compute_micro_avg(results):
+    TP_key = list(k for k in results[0].keys() if k.startswith("TP@"))[0]
+    TP = sum(result[TP_key] for result in results)
+    PSize = sum(result["PSize"] for result in results)
+    TSize = sum(result["TSize"] for result in results)
+    try:
+        micro_p = TP / PSize
+    except ZeroDivisionError:
+        micro_p = 0.0
+    try:
+        micro_r = TP / TSize
+    except ZeroDivisionError:
+        micro_r = 0.0
+    try:
+        micro_f1 = 2 * micro_p * micro_r / (micro_p + micro_r)
+    except ZeroDivisionError:
+        micro_f1 = 0.0
+
+    return micro_p, micro_r, micro_f1
+
+
+def compute_macro_avg(results):
+    P_key = list(k for k in results[0].keys() if k.startswith("P@"))[0]
+    R_key = list(k for k in results[0].keys() if k.startswith("R@"))[0]
+
+    macro_p = sum(result[P_key] for result in results) / len(results)
+    macro_r = sum(result[R_key] for result in results) / len(results)
+
+    try:
+        macro_f1 = 2 * macro_p * macro_r / (macro_p + macro_r)
+    except ZeroDivisionError:
+        macro_f1 = 0.0
+
+    return macro_p, macro_r, macro_f1
+
+
 def print_table_rule(row_format, field_names, sep="-"):
     print(row_format.format(
         *([sep * 15] + [sep * 8] * (len(field_names) - 1))))
@@ -150,33 +186,18 @@ def print_table_evaluation_results(results):
         print(row_format.format(*[" " + (str(value) if not isinstance(value,
               float) else "%.3f" % value) for value in result.values()]))
 
-    # compute macro average
-    macro_avg = {field: (sum(result[field] for result in results) / len(
-        results) if field != "Animal" else "Macro avg.") for field in field_names}
-    print_table_rule(rule_format, field_names, sep="=")
-    print(row_format.format(*[" " + (str(value) if not isinstance(value,
-          float) else "%.3f" % value) for value in macro_avg.values()]))
-
     # compute micro average
-    TP_key = list(k for k in results[0].keys() if k.startswith("TP@"))[0]
-    TP = sum(result[TP_key] for result in results)
-    PSize = sum(result["PSize"] for result in results)
-    TSize = sum(result["TSize"] for result in results)
-    try:
-        micro_p = TP / PSize
-    except ZeroDivisionError:
-        micro_p = 0.0
-    try:
-        micro_r = TP / TSize
-    except ZeroDivisionError:
-        micro_r = 0.0
-    try:
-        micro_f1 = 2 * micro_p * micro_r / (micro_p + micro_r)
-    except ZeroDivisionError:
-        micro_f1 = 0.0
+    micro_p, micro_r, micro_f1 = compute_micro_avg(results)
     print_table_rule(rule_format, field_names, sep="=")
     print(row_format.format(*[" Micro avg.", " %.3f" %
           micro_p, " %.3f" % micro_r, " %.3f" % micro_f1]))
+
+    # compute macro average
+    macro_p, macro_r, macro_f1 = compute_macro_avg(results)
+    print_table_rule(rule_format, field_names, sep="=")
+
+    print(row_format.format(*[" Macro avg.", " %.3f" %
+          macro_p, " %.3f" % macro_r, " %.3f" % macro_f1]))
 
     print_table_rule(rule_format, field_names, sep="-")
 

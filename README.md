@@ -87,8 +87,8 @@ table (tested on MacOS with Python 3.9.12, SpaCy 3.3.0).
 | giant panda   | 0.000  | 0.000  | 0.000  |
 | giraffe        | 0.333  | 0.133  | 0.190  |
 | lion          | 0.273  | 0.120  | 0.167  |
-| **Macro avg.**| **0.378**  | **0.116**  | **0.176**  |
 | **Micro avg.**| **0.414**  | **0.112**  | **0.176**  |
+| **Macro avg.**| **0.378**  | **0.116**  | **0.178**  |
 
 ### What is in the [``evaluate.py``](evaluate.py) file?
 
