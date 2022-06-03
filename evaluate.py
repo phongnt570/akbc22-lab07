@@ -34,7 +34,7 @@ def normalize_object_phrase_list(phrase_list: List[str]) -> List[str]:
     """
     Normalizes object phrase list.
     :param phrase_list: list of object phrases
-    :return: normalized object phrase list
+    :return: normalized object phrase list (i.e., list of head words)
     """
     seen = set()
     normalized_phrase_list = []
