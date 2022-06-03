@@ -166,3 +166,5 @@ cython_debug/
 documents/*.jsonl
 
 *predictions.json
+
+.DS_Store/
