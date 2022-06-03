@@ -5,6 +5,11 @@ This repository contains code and data for Lab 7 of the
 at
 Saarland University in the Summer semester 2022.
 
+You can start working on the assignment by following the getting-started steps.
+If you encounter any technical problems or have any questions, first check out
+the FAQs section below. If it couldn't answer your questions, use the Google
+group to ask.
+
 ## Getting started
 
 To get started, follow these steps:
