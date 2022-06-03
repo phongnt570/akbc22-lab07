@@ -5,6 +5,7 @@ Date: 2022-06-03
 
 import argparse
 import logging
+from typing import List
 
 import spacy
 
@@ -15,7 +16,7 @@ logger = logging.getLogger(__name__)
 nlp = spacy.load("en_core_web_sm")
 
 
-def get_head_word(phrase):
+def get_head_word(phrase: str) -> str:
     """
     Gets head word of a phrase.
     :param phrase: phrase
@@ -29,13 +30,21 @@ def get_head_word(phrase):
         return phrase.lower().strip().split()[-1]
 
 
-def normalize_object_phrase_list(phrase_list):
+def normalize_object_phrase_list(phrase_list: List[str]) -> List[str]:
     """
     Normalizes object phrase list.
     :param phrase_list: list of object phrases
     :return: normalized object phrase list
     """
-    return [get_head_word(phrase) for phrase in phrase_list]
+    seen = set()
+    normalized_phrase_list = []
+    for phrase in phrase_list:
+        head_word = get_head_word(phrase)
+        if head_word in seen:
+            continue
+        seen.add(head_word)
+        normalized_phrase_list.append(phrase)
+    return normalized_phrase_list
 
 
 def precision_at_k(tgt_list, pred_list, k):
@@ -187,6 +196,7 @@ def evaluate_predictions(tgt_animals_diets, pred_animals_diets, k):
     results = []
     for animal, tgt_diets in tgt_animals_diets.items():
         tgt_diets = normalize_object_phrase_list(tgt_diets)
+
         try:
             pred_diets = pred_animals_diets[animal]
         except KeyError:
