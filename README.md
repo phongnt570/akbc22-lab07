@@ -101,5 +101,11 @@ table (tested on MacOS with Python 3.9.12, SpaCy 3.3.0).
 ### What is in the [``evaluate.py``](evaluate.py) file?
 
 This file contains the code for evaluating your predictions, on the following
-metrics: Precision@k, Recall@k and F1@k whereas k is default to 30 (the maximal
+metrics: 
+- Precision@k
+- Recall@k 
+- F1@k 
+whereas k is default to 30 (the maximal
 number of labels for an animal in the private test data).
+
+We use head-word matching to identify correct answers.
