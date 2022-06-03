@@ -105,6 +105,7 @@ metrics:
 - Precision@k
 - Recall@k 
 - F1@k 
+
 whereas k is default to 30 (the maximal
 number of labels for an animal in the private test data).
 
