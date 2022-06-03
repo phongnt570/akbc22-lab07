@@ -125,6 +125,11 @@ def true_positive(tgt_list, pred_list, k):
 
 
 def compute_micro_avg(results):
+    """
+    Computes micro-average.
+    :param results: list of results
+    :return: micro-average
+    """
     TP_key = list(k for k in results[0].keys() if k.startswith("TP@"))[0]
     TP = sum(result[TP_key] for result in results)
     PSize = sum(result["PSize"] for result in results)
@@ -146,6 +151,11 @@ def compute_micro_avg(results):
 
 
 def compute_macro_avg(results):
+    """
+    Computes macro-average.
+    :param results: list of results
+    :return: macro-average
+    """
     P_key = list(k for k in results[0].keys() if k.startswith("P@"))[0]
     R_key = list(k for k in results[0].keys() if k.startswith("R@"))[0]
 
@@ -161,6 +171,13 @@ def compute_macro_avg(results):
 
 
 def print_table_rule(row_format, field_names, sep="-"):
+    """
+    Prints table rule.
+    :param row_format: row format
+    :param field_names: field names
+    :param sep: separator
+    :return: None
+    """
     print(row_format.format(
         *([sep * 15] + [sep * 8] * (len(field_names) - 1))))
 
@@ -169,6 +186,7 @@ def print_table_evaluation_results(results):
     """
     Prints evaluation results in a table.
     :param results: list of evaluation results
+    :return: None
     """
     field_names = list(k for k in results[0].keys() if k == "Animal" or k.startswith(
         "P@") or k.startswith("R@") or k.startswith("F1@"))
@@ -210,7 +228,6 @@ def evaluate_predictions(tgt_animals_diets, pred_animals_diets, k, print_results
     :param k: number of predicted diets to consider
     :return: evaluation results
     """
-
     logger.info(
         f"Evaluating {len(tgt_animals_diets)} animals: {', '.join(tgt_animals_diets.keys())}")
 
