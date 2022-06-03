@@ -26,9 +26,12 @@ Then, activate the virtual environment whenever you work on the assignment.
 $ pip3 install spacy
 $ python3 -m spacy download en_core_web_md
 ```
-5. Write your solution in the ``your_solution`` function in the 
+5. (Optional) Take a look at [``baseline.py``](baseline.py) for the tutor's
+baseline algorithm, and try running it using this 
+[guideline](#what-is-in-the-baselinepy-file).
+6. Write your solution in the ``your_solution`` function in the 
 [``solution.py``](solution.py) file.
-6. Execute [``main.py``](main.py) to run your extraction algorithm and see the
+7. Execute [``main.py``](main.py) to run your extraction algorithm and see the
 evaluation results _on the public test_:
 ```bash
 $ python3 main.py
