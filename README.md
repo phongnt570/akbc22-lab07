@@ -26,7 +26,7 @@ $ cd akbc22-lab07
 [``venv``](https://docs.python.org/3/library/venv.html) or 
 [``conda``](https://www.anaconda.com/)).
 Then, activate the virtual environment whenever you work on the assignment.
-4. If you haven't had SpaCy installed:
+4. If you haven't installed SpaCy:
 ```bash
 $ pip3 install spacy
 $ python3 -m spacy download en_core_web_md
@@ -59,7 +59,7 @@ $ python3 main.py --out_file /path/to/your/predictions_file.json
 - The retrieved documents for those animals can be found in
 [``public_test/documents``](public_test/documents).
 - The ground truth for the public test data can be found in
-[``publc_test/labels.json``](publc_test/labels.json).
+[``public_test/labels.json``](public_test/labels.json).
 
 ### Running all animals is so slow, can I test my algorithm with fewer animals?
 
