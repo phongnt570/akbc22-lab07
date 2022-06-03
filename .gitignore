@@ -167,4 +167,4 @@ documents/*.jsonl
 
 *predictions.json
 
-.DS_Store/
+.DS_Store
