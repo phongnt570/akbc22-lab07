@@ -163,7 +163,7 @@ cython_debug/
 .python-version
 
 # text files
-documents/*.jsonl
+public_test/documents/*.jsonl
 
 *predictions.json
 
