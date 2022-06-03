@@ -202,7 +202,7 @@ def print_table_evaluation_results(results):
     print_table_rule(rule_format, field_names, sep="-")
 
 
-def evaluate_predictions(tgt_animals_diets, pred_animals_diets, k):
+def evaluate_predictions(tgt_animals_diets, pred_animals_diets, k, print_results=True):
     """
     Evaluates predictions.
     :param tgt_animals_diets: list of target animals and diets
@@ -244,8 +244,9 @@ def evaluate_predictions(tgt_animals_diets, pred_animals_diets, k):
             f"TSize": tgt_size,
         })
 
-    print("Evaluation results:")
-    print_table_evaluation_results(results)
+    if print_results:
+        print("Evaluation results:")
+        print_table_evaluation_results(results)
 
     return results
 
