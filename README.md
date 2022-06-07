@@ -25,7 +25,8 @@ $ cd akbc22-lab07
 3. (Optional) Create a virtual Python environment (e.g., using 
 [``venv``](https://docs.python.org/3/library/venv.html) or 
 [``conda``](https://www.anaconda.com/)).
-Then, activate the virtual environment whenever you work on the assignment.
+Then, activate the virtual environment whenever you start working on the
+assignment.
 4. If you haven't installed SpaCy:
 ```bash
 $ pip3 install spacy
