@@ -61,6 +61,8 @@ $ python3 main.py --out_file /path/to/your/predictions_file.json
 - The ground truth for the public test data can be found in
 [``public_test/labels.json``](public_test/labels.json).
 
+Functions in [``file_io.py``](file_io.py) handle reading these files.
+
 ### Running all animals is so slow, can I test my algorithm with fewer animals?
 
 You can use the ``--test_animals`` argument to specify the animal(s) you want to
