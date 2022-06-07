@@ -30,7 +30,7 @@ assignment.
 4. If you haven't installed SpaCy:
 ```bash
 $ pip3 install spacy
-$ python3 -m spacy download en_core_web_md
+$ python3 -m spacy download en_core_web_sm
 ```
 5. (Optional) Take a look at [``baseline.py``](baseline.py) for the tutor's
 baseline algorithm, and try running it using this 
