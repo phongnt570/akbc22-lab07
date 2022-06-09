@@ -20,7 +20,7 @@ def your_solution(animal: str, doc_list: List[Dict[str, str]]) -> List[Tuple[str
     :return: A list of things that the animal eats along with their frequencies.
     """
 
-    print(f"Animal: \"{animal}\". Number of documents: {len(doc_list)}.")
+    logger.info(f"Animal: \"{animal}\". Number of documents: {len(doc_list)}.")
 
     # You can directly use the following list of documents, which is a list of str, if you don't need other information (i.e., url, title).
     documents = [doc["text"] for doc in doc_list]
