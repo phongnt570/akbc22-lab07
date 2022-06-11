@@ -22,6 +22,9 @@ def get_head_word(phrase: str) -> str:
     :param phrase: phrase
     :return: head word of a phrase
     """
+    if phrase.strip() == "":
+        return ""
+
     try:
         # try to get head word using SpaCy
         return list(nlp(phrase.lower().strip()).sents)[0].root.lemma_
