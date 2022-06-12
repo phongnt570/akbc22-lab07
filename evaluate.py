@@ -46,7 +46,7 @@ def normalize_object_phrase_list(phrase_list: List[str]) -> List[str]:
         if head_word in seen:
             continue
         seen.add(head_word)
-        normalized_phrase_list.append(phrase)
+        normalized_phrase_list.append(head_word)
     return normalized_phrase_list
 
 
