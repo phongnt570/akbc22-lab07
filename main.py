@@ -61,8 +61,9 @@ def main():
         valid_animals = set(animals)
         animals = []
         for animal in args.test_animals.lower().split(","):
+            animal = animal.strip()
             if animal in valid_animals:
-                animals.append(animal.strip())
+                animals.append(animal)
 
     doc_file_paths = [
         doc_dir / f"{animal.replace(' ', '_')}.jsonl.gz" for animal in animals]
